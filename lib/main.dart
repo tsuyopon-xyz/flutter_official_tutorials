@@ -19,9 +19,15 @@ class MyApp extends StatelessWidget {
           title: const Text('Flutter layout demo'),
         ),
         body: Center(
-          child: Column(
+          child: ListView(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.asset(
+                'images/lake.jpg',
+                width: 600,
+                height: 240,
+                fit: BoxFit.cover,
+              ),
               _createTitleSection(),
               _createButtonSection(Theme.of(context).primaryColor),
               _createTextSection(),
@@ -34,6 +40,7 @@ class MyApp extends StatelessWidget {
 
   Widget _createTitleSection() {
     return Container(
+      decoration: const BoxDecoration(color: Color.fromARGB(50, 255, 0, 0)),
       padding: const EdgeInsets.all(32),
       child: Row(
         children: [
@@ -75,13 +82,16 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _createButtonSection([Color color = Colors.orange]) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildButtonColumn(color, Icons.call, 'CALL'),
-        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-        _buildButtonColumn(color, Icons.share, 'SHARE'),
-      ],
+    return Container(
+      decoration: const BoxDecoration(color: Colors.pink),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildButtonColumn(color, Icons.call, 'CALL'),
+          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+          _buildButtonColumn(color, Icons.share, 'SHARE'),
+        ],
+      ),
     );
   }
 
